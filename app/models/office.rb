@@ -8,4 +8,6 @@ class OfficeSetup
 
   #Office Information - General
   field :client_data_last_import, type: Time
+
+  has_many :advisor
 end

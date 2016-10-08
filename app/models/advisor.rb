@@ -6,6 +6,7 @@ class Advisor
   field :advisor_name, type: String
   field :advisor_email, type: String
 
+  belongs_to :office
   has_many :client
 
 end
