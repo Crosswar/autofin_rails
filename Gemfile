@@ -13,7 +13,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml-rails'
 gem 'responders'
 gem 'simple_form'
-
+gem 'roo'
+gem "iconv", "~> 1.0.3"
 
 group :development, :test do
   gem 'byebug'

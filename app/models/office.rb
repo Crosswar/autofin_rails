@@ -6,4 +6,6 @@ class OfficeSetup
   field :client_data_last_import, type: Time
 
   has_many :advisor
+  has_many :client
+
 end

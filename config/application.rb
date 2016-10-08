@@ -4,6 +4,8 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
+require "csv"
+require "iconv"
 
 Bundler.require(*Rails.groups)
 
