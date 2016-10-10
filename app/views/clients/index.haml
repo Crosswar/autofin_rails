@@ -2,3 +2,6 @@
 = form_tag import_clients_path, multipart: true do
   = file_field_tag :file
   = submit_tag "Import"
+%h2=@clients.count
+- for client in @clients
+  %h1=client.client_name

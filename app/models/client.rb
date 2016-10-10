@@ -7,7 +7,7 @@ class Client
   field :client_advised_by, type: String
   field :client_code, type: String
   field :client_name, type: String
-  field :client_dob, type: String
+  field :client_dob, type: Date
   field :client_email, type: String
   field :client_amount_invested, type: BigDecimal
   field :client_amount_unused, type: BigDecimal
@@ -15,12 +15,20 @@ class Client
   belongs_to :user
 
   def self.import(file)
+    Client.delete_all
     spreadsheet = open_spreadsheet(file)
-    header = spreadsheet.row(1)
-    (2..spreadsheet.last_row).each do |i|
-      row = Hash[[header, spreadsheet.row(i)].transpose]
+    spreadsheet.each_row_streaming(pad_cells: true, offset: 1) do |row|
       client = Client.new
-      client.attributes = row.to_hash.slice(*row.to_hash.keys)
+      attributes = {
+        :client_advised_by => row[0].try(:cell_value),
+        :client_code => row[1].try(:cell_value),
+        :client_name => row[3].try(:cell_value),
+        :client_dob => row[11].try(:cell_value),
+        :client_email => row[7].try(:cell_value),
+        :client_amount_invested => row[34].try(:cell_value),
+        :client_amount_unused => row[38].try(:cell_value)
+      }
+      client.attributes = attributes
       client.save!
     end
   end
