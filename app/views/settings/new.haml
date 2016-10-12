@@ -1,0 +1,4 @@
+%h2 Import Clients
+= form_tag settings_path, multipart: true, method: :post do
+  = file_field_tag :file
+  = submit_tag "Import"

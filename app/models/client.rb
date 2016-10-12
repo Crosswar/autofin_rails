@@ -18,7 +18,6 @@ class Client
     Client.delete_all
     spreadsheet = open_spreadsheet(file)
     spreadsheet.each_row_streaming(pad_cells: true, offset: 1) do |row|
-      client = Client.new
       attributes = {
         :client_advised_by => row[0].try(:cell_value),
         :client_code => row[1].try(:cell_value),
@@ -28,6 +27,7 @@ class Client
         :client_amount_invested => row[34].try(:cell_value),
         :client_amount_unused => row[38].try(:cell_value)
       }
+      client = Client.new
       client.attributes = attributes
       client.save!
     end

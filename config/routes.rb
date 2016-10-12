@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
   resource :dashboard, only: [:index]
+  resources :clients
 
-  resources :clients do
-    collection { post :import }
-  end
+  resources :settings
 
   root "dashboard#index"
 
