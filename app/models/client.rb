@@ -19,7 +19,7 @@ class Client
     spreadsheet = open_spreadsheet(file)
     spreadsheet.each_row_streaming(pad_cells: true, offset: 1) do |row|
       attributes = {
-        :client_advised_by => row(0).try(:cell_value),
+        :client_advised_by => row[0].try(:cell_value),
         :client_code => row[1].try(:cell_value),
         :client_name => row[3].try(:cell_value),
         :client_dob => row[11].try(:cell_value),
