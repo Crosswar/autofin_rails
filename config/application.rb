@@ -11,5 +11,6 @@ Bundler.require(*Rails.groups)
 
 module AutofinRails
   class Application < Rails::Application
+  	config.i18n.default_locale = :'ptBR'
   end
 end

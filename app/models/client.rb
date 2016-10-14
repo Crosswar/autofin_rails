@@ -17,6 +17,7 @@ class Client
 
   scope :active, -> { where(status: "ATIVO")}
   scope :inactive, -> { where(status: "INATIVO")}
+  scope :total_invested, -> { where(:amount_invested.gt => 0)}
   scope :total_unused, -> { where(:amount_unused.gt => 0)}
 
   def self.import(file)

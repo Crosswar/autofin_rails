@@ -5,11 +5,11 @@
   Clientes Inativos:
   =@clients.inactive.count
 %h2
-  Total não investido:
-  =@clients.total_unused.sum(&:amount_unused)
-
-- for client in @clients.total_unused
-  =client.amount_unused
+  Total parado em conta:
+  #{number_to_currency(@clients.total_unused.sum(&:amount_unused))}
+%h2
+  Total do Escritório:
+  #{number_to_currency(@clients.total_invested.sum(&:amount_invested))}
 %h1= link_to "Lista de Clientes", clients_path
 %h1= link_to "Configurações", settings_path
 %h1 Envios Automáticos

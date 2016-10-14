@@ -16,8 +16,8 @@ gem 'haml-rails'
 gem 'responders'
 gem 'simple_form'
 gem 'roo'
-gem "iconv", "~> 1.0.3"
-
+gem 'iconv', '~> 1.0.3'
+gem 'i18n'
 
 group :production do
   gem "rails_12factor"
