@@ -1,2 +1,15 @@
-%h1= link_to "Clients List", clients_path
-%h1= link_to "Settings", settings_path
+%h2
+  Clientes Ativos:
+  =@clients.active.count
+%h2
+  Clientes Inativos:
+  =@clients.inactive.count
+%h2
+  Total não investido:
+  =@clients.total_unused.sum(&:amount_unused)
+
+- for client in @clients.total_unused
+  =client.amount_unused
+%h1= link_to "Lista de Clientes", clients_path
+%h1= link_to "Configurações", settings_path
+%h1 Envios Automáticos
