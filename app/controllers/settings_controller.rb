@@ -10,7 +10,7 @@ class SettingsController < ApplicationController
   end
 
   def create
-    @clients = Client.import(params[:file])
+    @clients = ClientImporter.import(params[:file])
     redirect_to root_url
   end
 

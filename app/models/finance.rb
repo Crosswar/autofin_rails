@@ -1,4 +1,4 @@
-class Client
+class Finance
   include Mongoid::Document
   include Mongoid::Timestamps
 

@@ -12,5 +12,6 @@ Bundler.require(*Rails.groups)
 module AutofinRails
   class Application < Rails::Application
   	config.i18n.default_locale = :'ptBR'
+  	config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
 end
